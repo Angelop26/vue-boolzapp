@@ -1,0 +1,86 @@
+/* RESET */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+/* COMMON */
+body{
+    background: linear-gradient(180deg, #009688 10%, #DADBD4 10%);
+    height: 100vh;
+}
+
+.container{
+    width: 80%;
+    height: 800px;
+    margin: 2rem auto;
+    border: 1px solid black;
+    display: flex;
+}
+
+/* LEFT*/
+.col-left{
+    width: 40%;
+    height: 100%;
+    border: 1px solid green;
+}
+
+.my-profile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #D1D1D1;
+    height: 75px;
+    padding: 0 1rem;
+}
+
+/* profile */
+.my-avatar{
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.my-avatar img{
+    width: 35%;
+}
+
+.utilities i{
+    margin-left: 1rem;
+    font-size: 1.3rem;
+}
+
+/* cta */
+.cta{
+    background-color: #8edafc;
+    display: flex;
+    align-items: center;
+}
+
+.bell-slash{
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    margin: 5px 0;
+    margin-left: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.cta a{
+    color: #446473;
+}
+/* right */
+.col-right{
+    width: 60%;
+    height: 100%;
+    border: 1px solid red;
+}
