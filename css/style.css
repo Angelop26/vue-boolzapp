@@ -16,12 +16,20 @@ body{
     height: 100vh;
 }
 
+.flex{
+    display: flex;
+}
+
+.jc-c{
+    justify-content: center;
+}
+
 .container{
     width: 80%;
     height: 900px;
-    margin: 2rem auto;
-    border: 1px solid black;
-    display: flex;
+    /* margin: 2rem auto; */
+    /* border: 1px solid black; */
+    padding-top: 2rem;
 }
 
 i{
@@ -36,7 +44,6 @@ i{
 }
 
 .profile{
-    display: flex;
     align-items: center;
     background-color: #EAEAEA;
     padding: .5rem 1rem;
@@ -49,13 +56,12 @@ i{
 
 /* profile */
 .my-avatar{
-    display: flex;
     align-items: center;
     width: 30%;
 }
 
 .my-avatar img{
-    width: 25%;
+    width: 20%;
 }
 
 .utilities i{
@@ -66,7 +72,6 @@ i{
 /* cta */
 .cta{
     background-color: #8edafc;
-    display: flex;
     align-items: center;
     height: 70px;
 }
@@ -89,8 +94,6 @@ i{
 
 /* search bar */
 .search{
-    display: flex;
-    justify-content: center;
     padding: 10px 0;
     background-color: #FAFAFA;
     height: 60px;
@@ -114,7 +117,6 @@ i{
     height: calc(100% - 190px);
 }
 .contact{
-    display: flex;
     padding: 5px 5px 5px 10px;
     border-top: 1px solid lightgray;
 }
@@ -125,7 +127,11 @@ i{
 }
 
 .contact-avatar{
-    display: flex;
+    width: 60%;
+}
+
+.contact.item:hover{
+    background-color: #EAEAEA;
 }
 
 .contact-img{
@@ -156,7 +162,6 @@ i{
 
 /* header */
 .chat-header{
-    display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #EAEAEA;
@@ -174,17 +179,28 @@ i{
     width: 80%;
     margin: 0 auto;
     padding-top: 50px;
+    overflow-y: scroll;
+    flex-direction: column;
 }
 
-.single-message{
+.message{
     position: relative;
-    /* width: 25%; */
-    max-width: 50%;
-    background-color: greenyellow;
+    width: 25%;
+    /* max-width: 500px; */
     border-radius: 5px;
     padding: 1.2rem 1rem;
+    margin-bottom: 10px;
+    
 }
 
+.user{
+    align-self: flex-end;
+    background-color: greenyellow;
+}
+
+.other.message{
+    background-color: #FAFAFA;
+}
 .send-time{
     color: gray;
     position: absolute;
@@ -196,7 +212,6 @@ i{
 .chat-input{
     height: 60px;
     background-color: #EAEAEA;
-    display: flex;
     justify-content: space-around;
     align-items: center;
 }

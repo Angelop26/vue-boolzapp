@@ -165,11 +165,23 @@ createApp({
                         }
                     ],
                 }
-            ]
-            
+            ],
+            inputMessage:{
+                    text:'',
+                    status: 'sent',
+                },
+            currentContact:''
         }
     },
     methods:{
+        messageToSend(){
+          if(this.inputMessage !== ''){
 
+          }
+        },
+
+        chatOpen(contact){
+            this.currentContact = contact
+        }
     }
 }).mount('#app')

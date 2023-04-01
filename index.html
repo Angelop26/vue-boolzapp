@@ -17,14 +17,14 @@
 
 </head>
 <body>
-    <div id="app">
-        <div class="container">
+    <div id="app" class="flex jc-c">
+        <div class="container flex">
 
             <!-- left-side -->
             <div class="col-left">
                 <!-- profile -->
-                <div class="my profile">
-                    <div class="my-avatar">
+                <div class="my profile flex">
+                    <div class="my-avatar flex">
                         <img src="img/avatar_io.jpg" alt="">
                         <div>Sofia</div>
                     </div>
@@ -37,7 +37,7 @@
                 <!-- /profile -->
 
                 <!-- cta -->
-                <div class="cta">
+                <div class="cta flex">
                     <div class="bell-slash"><i class="fa-solid fa-bell-slash" style="color: #8edafc;"></i></div>
                     <div class="text">
                         <p>Ricevi notifiche di nuovi messaggi</p>
@@ -47,7 +47,7 @@
                 <!-- /cta -->
                 
                 <!-- search-bar -->
-                <div class="search">
+                <div class="search flex jc-c">
                     <div class="search-fontawesome">
                         <i class="fa-solid fa-magnifying-glass" style="color: #b1b1b1;"></i>
                     </div>
@@ -57,14 +57,14 @@
 
                 <!-- avatars -->
                 <div class="contacts">
-                    <div class="contact item" v-for="contact in contacts">
-                        <div class="contact-avatar">
+                    <div class="contact item flex" v-for="contact in contacts" @click="chatOpen(contact)">
+                        <div class="contact-avatar flex">
                             <div class="contact-img">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
                             </div>
                             <div class="contact-text">
                                 <div class="name">{{contact.name}}</div>
-                                <p>lorem ipsum</p>
+                                <p> {{contact.messages[contact.messages.length-1].message}} </p>
                             </div>
                         </div>
                         <div class="last-access">
@@ -79,14 +79,14 @@
             <!-- right-side -->
             <div class="col-right">
                 <!-- chat header -->
-                <div class="chat-header">
-                    <div class="contact profile">
+                <div class="chat-header flex">
+                    <div class="contact profile flex">
                         <div class="contact-img">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="'img/avatar' + currentContact.avatar + '.jpg'"  alt="">
                         </div>
                         <div class="contact-text">
-                            <div class="name">Michele</div>
-                            <p>lorem ipsum</p>
+                            <div class="name">{{currentContact.name}}</div>
+                            <p></p>
                         </div>
                     </div>
                     <div class="utilities">
@@ -99,18 +99,23 @@
 
                 <!-- chat -->
                 <div class="chat">
-                    <div class="chat-container">
-                        <div class="single-message">
-                            <div class="text">ciao</div>
+                    <div class="chat-container flex">
+                        <div class="message" v-for="message in currentContact.messages" :class="message.status === 'sent'? 'user':'other'">
+                            <div class="text"> {{message.message}} </div>
                             <div class="send-time">12:00</div>
                         </div>
+                        <!-- <div class="other message">
+                            <div class="text">ciao</div>
+                            <div class="send-time">12:00</div>
+                        </div> -->
                     </div>
                 </div>
                 <!-- /chat -->
 
                 <!-- chat input -->
-                <div class="chat-input">
-                    <input type="text" placeholder=" Scrivi un messaggio">
+                <div class="chat-input flex">
+                    <i class="fa-regular fa-face-smile" style="color: #b1b1b1b1"></i>
+                    <input type="text" placeholder=" Scrivi un messaggio" v-model="inputMessage" @keyup.enter="messageToSend">
                     <i class="fa-solid fa-microphone" style="color: #b1b1b1"></i>
                 </div>
                 <!-- /chat input -->
