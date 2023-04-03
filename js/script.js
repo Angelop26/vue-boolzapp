@@ -171,10 +171,11 @@ createApp({
                     status: 'sent',
                 },
             autoMessage:{
-                    message:'',
+                    message:'ok',
                     status: 'received',
                 },
             currentContact:'',
+            contactSearch:''
         }
     },
     methods:{
@@ -182,8 +183,7 @@ createApp({
           if(this.inputMessage.text !== ''){
             this.currentContact.messages.push(this.inputMessage)
           }
-          setTimeout(() => {
-             this.autoMessage.message = 'ok' 
+          setTimeout(() => { 
              this.currentContact.messages.push(this.autoMessage)
           },1000)
         },
@@ -191,6 +191,12 @@ createApp({
 
         chatOpen(contact){
             this.currentContact = contact
+        },
+        
+        search(){
+            this.contacts.forEach(element => {
+                element.visible = element.name.includes(this.contactSearch)
+            });
         }
     }
 }).mount('#app')
