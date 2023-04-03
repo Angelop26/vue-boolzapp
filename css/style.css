@@ -109,6 +109,7 @@ i{
 
 .search input{
     width: 80%;
+    padding: 5px 10px;
 }
 
 /* contacts */
@@ -130,7 +131,11 @@ i{
     width: 60%;
 }
 
-.contact.item:hover{
+.contact.item:focus{
+    background-color: #EAEAEA;
+}
+
+.chat-clicked{
     background-color: #EAEAEA;
 }
 
@@ -208,6 +213,7 @@ i{
     right: 10px;
     font-size: .8rem;
 }
+
 /* chat input */
 .chat-input{
     height: 60px;

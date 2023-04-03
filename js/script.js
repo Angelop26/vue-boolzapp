@@ -167,18 +167,27 @@ createApp({
                 }
             ],
             inputMessage:{
-                    text:'',
+                    message:'',
                     status: 'sent',
                 },
-            currentContact:''
+            autoMessage:{
+                    message:'',
+                    status: 'received',
+                },
+            currentContact:'',
         }
     },
     methods:{
         messageToSend(){
-          if(this.inputMessage !== ''){
-
+          if(this.inputMessage.text !== ''){
+            this.currentContact.messages.push(this.inputMessage)
           }
+          setTimeout(() => {
+             this.autoMessage.message = 'ok' 
+             this.currentContact.messages.push(this.autoMessage)
+          },1000)
         },
+
 
         chatOpen(contact){
             this.currentContact = contact

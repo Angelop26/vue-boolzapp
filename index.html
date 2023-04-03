@@ -51,7 +51,7 @@
                     <div class="search-fontawesome">
                         <i class="fa-solid fa-magnifying-glass" style="color: #b1b1b1;"></i>
                     </div>
-                    <input type="text" placeholder="  Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
                 <!-- /search-bar -->
 
@@ -100,14 +100,10 @@
                 <!-- chat -->
                 <div class="chat">
                     <div class="chat-container flex">
-                        <div class="message" v-for="message in currentContact.messages" :class="message.status === 'sent'? 'user':'other'">
+                        <span class="message" v-for="message in currentContact.messages" :class="message.status === 'sent'? 'user':'other'">
                             <div class="text"> {{message.message}} </div>
                             <div class="send-time">12:00</div>
-                        </div>
-                        <!-- <div class="other message">
-                            <div class="text">ciao</div>
-                            <div class="send-time">12:00</div>
-                        </div> -->
+                        </span>
                     </div>
                 </div>
                 <!-- /chat -->
@@ -115,7 +111,7 @@
                 <!-- chat input -->
                 <div class="chat-input flex">
                     <i class="fa-regular fa-face-smile" style="color: #b1b1b1b1"></i>
-                    <input type="text" placeholder=" Scrivi un messaggio" v-model="inputMessage" @keyup.enter="messageToSend">
+                    <input type="text" placeholder=" Scrivi un messaggio" v-model="inputMessage.message" @keyup.enter="messageToSend">
                     <i class="fa-solid fa-microphone" style="color: #b1b1b1"></i>
                 </div>
                 <!-- /chat input -->
