@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- link vue -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
 
 </head>
 <body>
@@ -57,7 +58,7 @@
 
                 <!-- avatars -->
                 <div class="contacts">
-                    <div class="contact item flex" v-for="contact in contacts" @click="chatOpen(contact)" v-show="contact.visible">
+                    <div class="contact item flex" v-for="contact in contacts" @click="chatOpen(contact)" :class="{active: contact === currentContact}">
                         <div class="contact-avatar flex">
                             <div class="contact-img">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
@@ -86,7 +87,8 @@
                         </div>
                         <div class="contact-text">
                             <div class="name">{{currentContact.name}}</div>
-                            <p></p>
+                            <p>L'ultimo accesso è oggi alle 12
+                            </p>
                         </div>
                     </div>
                     <div class="utilities">
@@ -102,7 +104,7 @@
                     <div class="chat-container flex">
                         <span class="message" v-for="message in currentContact.messages" :class="message.status === 'sent'? 'user':'other'">
                             <div class="text"> {{message.message}} </div>
-                            <div class="send-time">12:00</div>
+                            <div class="send-time"> 12:00</div>
                         </span>
                     </div>
                 </div>
@@ -111,13 +113,15 @@
                 <!-- chat input -->
                 <div class="chat-input flex">
                     <i class="fa-regular fa-face-smile" style="color: #b1b1b1b1"></i>
-                    <input type="text" placeholder=" Scrivi un messaggio" v-model="inputMessage.message" @keyup.enter="messageToSend">
+                    <input type="text" placeholder="Scrivi un messaggio" v-model="inputMessage" @keyup.enter="messageToSend(currentContact)">
                     <i class="fa-solid fa-microphone" style="color: #b1b1b1"></i>
                 </div>
                 <!-- /chat input -->
             </div>
         </div>
     </div>
+    
+    <!-- custom script -->
     <script src="js/script.js"></script>
 </body>
 </html>

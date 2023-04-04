@@ -114,7 +114,7 @@ i{
 
 /* contacts */
 .contacts{
-    overflow: scroll;
+    overflow-y: scroll;
     height: calc(100% - 190px);
 }
 .contact{
@@ -125,13 +125,14 @@ i{
 .item{
     background-color: white;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .contact-avatar{
     width: 60%;
 }
 
-.contact.item:focus{
+.active{
     background-color: #EAEAEA;
 }
 
@@ -140,7 +141,7 @@ i{
 }
 
 .contact-img{
-    width: 20%;
+    width: 15%;
 }
 
 .contact-text{
@@ -171,6 +172,10 @@ i{
     align-items: center;
     background-color: #EAEAEA;
     border-left: 1px solid grey;
+}
+
+.chat-header .contact-img{
+    width: 8%;
 }
 
 /* chat */

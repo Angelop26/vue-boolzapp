@@ -166,10 +166,7 @@ createApp({
                     ],
                 }
             ],
-            inputMessage:{
-                    message:'',
-                    status: 'sent',
-                },
+            inputMessage:'',
             autoMessage:{
                     message:'ok',
                     status: 'received',
@@ -179,13 +176,14 @@ createApp({
         }
     },
     methods:{
-        messageToSend(){
-          if(this.inputMessage.text !== ''){
-            this.currentContact.messages.push(this.inputMessage)
+        messageToSend(currentContact){
+          if(this.inputMessage !== ''){
+            currentContact.messages.push({message: this.inputMessage, status:'sent'})
+            this.inputMessage = ''
+            setTimeout(() => { 
+               currentContact.messages.push(this.autoMessage)
+            },1000)
           }
-          setTimeout(() => { 
-             this.currentContact.messages.push(this.autoMessage)
-          },1000)
         },
 
 
@@ -195,7 +193,7 @@ createApp({
         
         search(){
             this.contacts.forEach(element => {
-                element.visible = element.name.includes(this.contactSearch)
+                element.visible = element.name.toLowerCase().includes(this.contactSearch)
             });
         }
     }
