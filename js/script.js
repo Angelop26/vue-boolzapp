@@ -193,7 +193,8 @@ createApp({
         
         search(){
             this.contacts.forEach(element => {
-                element.visible = element.name.toLowerCase().includes(this.contactSearch)
+                const elemLower = element.name.toLowerCase()
+                element.visible = elemLower.includes(this.contactSearch.toLowerCase())
             });
         }
     }

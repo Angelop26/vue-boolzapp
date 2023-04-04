@@ -58,7 +58,7 @@
 
                 <!-- avatars -->
                 <div class="contacts">
-                    <div class="contact item flex" v-for="contact in contacts" @click="chatOpen(contact)" :class="{active: contact === currentContact}">
+                    <div class="contact item flex" v-for="contact in contacts" @click="chatOpen(contact)" v-show="contact.visible" :class="{active: contact === currentContact}">
                         <div class="contact-avatar flex">
                             <div class="contact-img">
                                 <img :src="'img/avatar' + contact.avatar + '.jpg'" alt="">
