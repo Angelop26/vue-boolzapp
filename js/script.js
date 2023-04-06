@@ -1,5 +1,6 @@
 const {createApp} = Vue
 
+const dt = luxon.DateTime
 createApp({
     data(){
         return{
@@ -168,6 +169,7 @@ createApp({
             ],
             inputMessage:'',
             autoMessage:{
+                    date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),
                     message:'ok',
                     status: 'received',
                 },
@@ -178,7 +180,7 @@ createApp({
     methods:{
         messageToSend(currentContact){
           if(this.inputMessage !== ''){
-            currentContact.messages.push({message: this.inputMessage, status:'sent'})
+            currentContact.messages.push({date: dt.now().toFormat("dd/MM/yyyy HH:mm:ss"),message: this.inputMessage, status:'sent'})
             this.inputMessage = ''
             setTimeout(() => { 
                currentContact.messages.push(this.autoMessage)
@@ -196,6 +198,11 @@ createApp({
                 const elemLower = element.name.toLowerCase()
                 element.visible = elemLower.includes(this.contactSearch.toLowerCase())
             });
+        },
+
+        formatDate(dateFromMessage){
+            const myDate = dt.fromFormat(dateFromMessage, "dd/MM/yyyy hh:mm:ss")
+            return myDate.toLocaleString(dt.TIME_24_SIMPLE)
         }
     }
 }).mount('#app')

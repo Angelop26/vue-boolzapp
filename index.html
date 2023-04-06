@@ -69,7 +69,7 @@
                             </div>
                         </div>
                         <div class="last-access">
-                            12:00
+                           {{ formatDate(contact.messages[contact.messages.length-1].date)}}
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="chat-container flex">
                         <span class="message" v-for="message in currentContact.messages" :class="message.status === 'sent'? 'user':'other'">
                             <div class="text"> {{message.message}} </div>
-                            <div class="send-time"> 12:00</div>
+                            <div class="send-time">{{formatDate(message.date)}}</div>
                         </span>
                     </div>
                 </div>
@@ -121,6 +121,9 @@
         </div>
     </div>
     
+    <!-- luxon script -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+
     <!-- custom script -->
     <script src="js/script.js"></script>
 </body>
